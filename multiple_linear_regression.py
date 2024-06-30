@@ -25,7 +25,20 @@ df.head()
 cdf = df[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY','FUELCONSUMPTION_COMB','CO2EMISSIONS']]
 cdf.head(9)
 
-plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS,  color='blue')
+plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS,  color='magenta')
 plt.xlabel("Engine size")
 plt.ylabel("Emission")
 plt.show()
+
+
+msk = np.random.rand(len(df)) < 0.8
+train = cdf[msk]
+test = cdf[~msk]
+
+
+plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS,  color='magenta')
+plt.xlabel("Engine size")
+plt.ylabel("Emission")
+plt.show()
+
+
